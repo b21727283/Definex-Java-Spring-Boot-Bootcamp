@@ -15,8 +15,7 @@ Advanced Task Management is an application that helps users manage tasks and pro
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/mgumussoy/advanced-task-management.git
-cd advanced-task-management
+git clone https://github.com/b21727283/Definex-Java-Spring-Boot-Bootcamp.git
 ```
 
 ### 2. Install Dependencies
