@@ -77,11 +77,10 @@ public class UserServiceImp implements UserService {
         UserEntity newUserEntity = dtoToEntity(newUser, newDepartment);
         newUserEntity.setId(userId);
 
-
         oldDepartment.getUsers().remove(oldUserEntity);
-        newDepartment.getUsers().add(newUserEntity);
 
-        repository.save(newUserEntity);
+        newUserEntity = repository.save(newUserEntity);
+        newDepartment.getUsers().add(newUserEntity);
     }
 
     @Override
