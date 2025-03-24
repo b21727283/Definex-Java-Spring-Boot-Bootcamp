@@ -25,6 +25,6 @@ public class UserDTO {
     @Builder.Default
     private List<String> authorities = new ArrayList<>();
 
-    @NotNull(message = "Enabled cannot be null")
+    @NotNull(message = "Department id cannot be null")
     private Long departmentId;
 }
