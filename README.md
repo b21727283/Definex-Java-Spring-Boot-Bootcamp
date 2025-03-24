@@ -1,5 +1,8 @@
 # Advanced Task Management
 
+$${\color{red} \huge \texttt{In order to create a user, it is necessary to have a user with ‘Admin’ authorisation.}}$$
+$${\color{red} \huge \texttt{Perhaps this can be removed for experimentation.}}$$
+
 ## About the Project
 
 Advanced Task Management is an application that helps users manage tasks and projects. This project is developed using Java, Spring Boot, and Maven.
