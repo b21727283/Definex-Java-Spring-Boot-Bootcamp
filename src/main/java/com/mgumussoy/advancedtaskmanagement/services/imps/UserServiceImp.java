@@ -76,6 +76,7 @@ public class UserServiceImp implements UserService {
 
         UserEntity newUserEntity = dtoToEntity(newUser, newDepartment);
         newUserEntity.setId(userId);
+        newUserEntity.setPassword(passwordEncoder.encode(newUser.getPassword()));
 
         oldDepartment.getUsers().remove(oldUserEntity);
 
