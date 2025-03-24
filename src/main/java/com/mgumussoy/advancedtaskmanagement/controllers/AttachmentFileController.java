@@ -40,7 +40,7 @@ public class AttachmentFileController {
         return ResponseEntity.ok(fileData);
     }
 
-    @PutMapping("/{fileId}")
+    @PostMapping("/{fileId}")
     public ResponseEntity<String> updateFile(
             @PathVariable Long fileId,
             @RequestParam("taskId") Long taskId,

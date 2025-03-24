@@ -14,5 +14,5 @@ public interface AttachmentFileService {
 
     byte[] getFile(Long fileId) throws AttachmentFileNotFoundException;
 
-    void updateFile(Long fileId, Long taskId, String description, MultipartFile file) throws IOException, AttachmentFileNotFoundException;
+    void updateFile(Long fileId, Long taskId, String description, MultipartFile file) throws IOException, AttachmentFileNotFoundException, TaskNotFoundException;
 }

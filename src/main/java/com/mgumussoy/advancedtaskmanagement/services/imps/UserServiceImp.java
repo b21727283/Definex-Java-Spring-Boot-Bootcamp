@@ -87,11 +87,12 @@ public class UserServiceImp implements UserService {
     @Transactional
     public void deleteUser(Long userId) throws UserEntityNotFoundException {
         UserEntity userEntity = getUserEntity(userId);
-        userEntity.setDeleted(true);
-        userEntity = repository.save(userEntity);
 
         Department department = userEntity.getDepartment();
         department.getUsers().remove(userEntity);
+
+        userEntity.setDeleted(true);
+        repository.save(userEntity);
     }
 
     private UserDTO entityToDto(UserEntity userEntity) {

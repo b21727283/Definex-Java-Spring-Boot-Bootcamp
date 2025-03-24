@@ -163,27 +163,33 @@ public class TaskServiceImp implements TaskService {
                 } else {
                     throw new TaskStateCanNotBeChanged();
                 }
+                break;
             }
             case TaskState.CANCELLED:
                 if (taskDTO.getReasonForStateChange() == null) {
                     throw new ReasonOfStateChangeMustBeEntered();
                 }
+                break;
             case TaskState.COMPLETED:
                 if (actualState != TaskState.IN_DEVELOPMENT) {
                     throw new TaskStateCanNotBeChanged();
                 }
+                break;
             case TaskState.IN_DEVELOPMENT:
                 if (!(actualState == TaskState.IN_ANALYSIS)) {
                     throw new TaskStateCanNotBeChanged();
                 }
+                break;
             case TaskState.IN_ANALYSIS:
                 if (!(actualState == TaskState.BACKLOG || actualState == TaskState.IN_DEVELOPMENT)) {
                     throw new TaskStateCanNotBeChanged();
                 }
+                break;
             case TaskState.BACKLOG:
                 if (actualState != TaskState.IN_ANALYSIS) {
                     throw new TaskStateCanNotBeChanged();
                 }
+                break;
         }
     }
 
