@@ -17,7 +17,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,8 +27,8 @@ public class UserServiceImp implements UserService {
     private final AuthorityRepository authorityRepository;
     private final DepartmentRepository departmentRepository;
 
-    private final static String ADMIN_AUTHORITY = "Admin";
-    private final static String TEAM_MEMBER = "Team Member";
+//    private final static String ADMIN_AUTHORITY = "Admin";
+//    private final static String TEAM_MEMBER = "Team Member";
 
     @Autowired
     public UserServiceImp(UserEntityRepository repository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, DepartmentRepository departmentRepository) {
@@ -102,13 +101,17 @@ public class UserServiceImp implements UserService {
                 .departmentId(userEntity.getDepartment().getId())
                 .build();
 
-        if (userEntity.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals(ADMIN_AUTHORITY))) {
-            userDTO.setAuthorities(userEntity.getAuthorities().stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .collect(Collectors.toList()));
-        } else {
-            userDTO.setAuthorities(new ArrayList<>(List.of(TEAM_MEMBER)));
-        }
+        userDTO.setAuthorities(userEntity.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList()));
+
+//        if (userEntity.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals(ADMIN_AUTHORITY))) {
+//            userDTO.setAuthorities(userEntity.getAuthorities().stream()
+//                    .map(GrantedAuthority::getAuthority)
+//                    .collect(Collectors.toList()));
+//        } else {
+//            userDTO.setAuthorities(new ArrayList<>(List.of(TEAM_MEMBER)));
+//        }
 
         return userDTO;
     }
@@ -121,13 +124,17 @@ public class UserServiceImp implements UserService {
                 .department(department)
                 .build();
 
-        if (userEntity.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals(ADMIN_AUTHORITY))) {
-            userEntity.setAuthorities(userDTO.getAuthorities().stream()
-                    .map(this::getAuthorityByName)
-                    .collect(Collectors.toList()));
-        } else {
-            userDTO.setAuthorities(new ArrayList<>(List.of(TEAM_MEMBER)));
-        }
+        userEntity.setAuthorities(userDTO.getAuthorities().stream()
+                .map(this::getAuthorityByName)
+                .collect(Collectors.toList()));
+
+//        if (userEntity.getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals(ADMIN_AUTHORITY))) {
+//            userEntity.setAuthorities(userDTO.getAuthorities().stream()
+//                    .map(this::getAuthorityByName)
+//                    .collect(Collectors.toList()));
+//        } else {
+//            userDTO.setAuthorities(new ArrayList<>(List.of(TEAM_MEMBER)));
+//        }
 
         return userEntity;
     }
