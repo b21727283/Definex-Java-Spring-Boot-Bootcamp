@@ -42,7 +42,7 @@ mvn spring-boot:run
 ```
 
 Once the application starts successfully, you can access it at `http://localhost:8080`.
-You can access Swagger UI from the '/swagger-ui.html' endpoint.
+You can access Swagger UI from the `/swagger-ui.html` endpoint.
 
 ## API Usage
 
